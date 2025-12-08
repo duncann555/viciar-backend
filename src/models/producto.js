@@ -54,12 +54,6 @@ const productoSchema = new Schema(
         },
       },
     },
-    estado: {
-      type: String,
-      required: true,
-      enum: ["Activo", "Inactivo"],
-      default: "Activo",
-    },
   },
   {
     timestamps: true,

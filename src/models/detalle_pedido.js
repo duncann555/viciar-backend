@@ -33,11 +33,11 @@ const detallePedidoSchema = new Schema(
       type: Number,
       required: true,
     },
-    pagoId: {
+    Cuotas:{
       type: String,
-      unique: true,
-      sparse: true,
-    },
+      required: true,
+      enum: ["Pago unico", "3 cuotas sin interes", "6 cuotas sin interes", "12 cuotas sin interes"]
+    }
   },
 
   { timestamps: true }
