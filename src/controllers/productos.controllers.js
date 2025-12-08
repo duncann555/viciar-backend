@@ -1,9 +1,20 @@
 import { json } from "express";
 import Producto from "../models/producto.js";
+import subirImagenCloudinary from "../helpers/cloudinaryUploader.js";
 
 export const crearProducto = async (req, res) => {
   try {
-    const nuevoProducto = new Producto(req.body);
+    let imagen_url = "";
+
+    if (req.file) {
+      const resultado = await subirImagenCloudinary(req.file.buffer);
+      imagen_url = resultado.secure_url;
+    } else {
+      imagen_url =
+        "https://www.shutterstock.com/image-illustration/vintage-monochrome-broken-wireless-joystick-600nw-1641964507.jpg";
+    }
+
+    const nuevoProducto = new Producto({ ...req.body, imagenUrl: imagen_url });
     await nuevoProducto.save();
 
     res.status(201).json({ mensaje: "Producto creado exitosamente" });

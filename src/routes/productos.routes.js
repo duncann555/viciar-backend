@@ -6,10 +6,15 @@ import {
   listarProductos,
   obtenerProductoID,
 } from "../controllers/productos.controllers.js";
+import upload from "../helpers/upload.js";
+import errorMulter from "../middlewares/ErrorMulter.js";
 
 const router = Router();
 
-router.route("/").post(crearProducto).get(listarProductos);
+router
+  .route("/")
+  .post(upload.single("imagenUrl"), errorMulter, crearProducto)
+  .get(listarProductos);
 router
   .route("/:id")
   .delete(eliminarProducto)
