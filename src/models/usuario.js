@@ -39,7 +39,7 @@ const usuarioSchema = new Schema(
       type: String,
       required: true,
       enum: ["Administrador", "Usuario"],
-      default: "Administrador",
+      default: "Usuario",
     },
     estado: {
       type: String,
