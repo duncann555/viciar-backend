@@ -18,7 +18,7 @@ export const listarProductos = async (req, res) => {
     const respuesta = await Producto.find();
 
     if (!respuesta) {
-      res.status(404).json({ json: "No hay productos para listar" });
+      return res.status(404).json({ json: "No hay productos para listar" });
     }
     res.status(200).json(respuesta);
   } catch (err) {
@@ -26,5 +26,52 @@ export const listarProductos = async (req, res) => {
     res
       .status(500)
       .json({ mensaje: "Ocurrio un error al listar los productos" });
+  }
+};
+
+export const eliminarProducto = async (req, res) => {
+  try {
+    const producto = await Producto.findByIdAndDelete(req.params.id);
+
+    if (!producto) {
+      return res.status(404).json({ mensaje: "Producto no encontrado" });
+    }
+
+    res.status(200).json({ mensaje: "Producto eliminado correctamente" });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error al eliminar el producto" });
+  }
+};
+
+export const obtenerProductoID = async (req, res) => {
+  try {
+    const producto = await Producto.findById(req.params.id);
+    if (!producto) {
+      return res.status(404).json({ mensaje: "Producto no encontrado" });
+    }
+    res.status(200).json(producto);
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error al obtener el producto" });
+  }
+};
+
+export const editarProducto = async (req, res) => {
+  try {
+    const producto = await Producto.findByIdAndUpdate(req.params.id, req.body);
+
+    if (!producto) {
+      return res.status(404).json({ mensaje: "Producto no encontrado" });
+    }
+
+    res.status(200).json({ mensaje: "Producto actualizado correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ mensaje: "Ocurrio un error al editar el producto" });
   }
 };
