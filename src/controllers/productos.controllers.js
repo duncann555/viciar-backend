@@ -74,11 +74,22 @@ export const obtenerProductoID = async (req, res) => {
 
 export const editarProducto = async (req, res) => {
   try {
-    const producto = await Producto.findByIdAndUpdate(req.params.id, req.body);
+    const producto = await Producto.findById(req.params.id);
 
     if (!producto) {
       return res.status(404).json({ mensaje: "Producto no encontrado" });
     }
+
+    const productoActualizado = { ...req.body };
+
+    if (req.file) {
+      const resultado = await subirImagenCloudinary(req.file.buffer);
+      productoActualizado.imagenUrl = resultado.secure_url;
+    }
+    await Producto.updateOne(
+      { _id: req.params.id },
+      { $set: productoActualizado }
+    );
 
     res.status(200).json({ mensaje: "Producto actualizado correctamente" });
   } catch (err) {

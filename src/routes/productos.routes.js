@@ -19,6 +19,6 @@ router
   .route("/:id")
   .delete(eliminarProducto)
   .get(obtenerProductoID)
-  .put(editarProducto);
+  .put(upload.single("imagenUrl"), errorMulter, editarProducto);
 
 export default router;
