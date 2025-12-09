@@ -33,6 +33,17 @@ const productoSchema = new Schema(
       minLength: 10,
       maxLength: 250,
     },
+    estado: {
+      type: String,
+      required: true,
+      enum: {
+        values: [
+          "Activo",
+          "Inactivo"
+        ],
+        default: "Activo"
+      },
+    },
     ultimoControl: {
       type: Date,
       default: Date.now,
