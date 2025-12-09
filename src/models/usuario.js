@@ -12,6 +12,14 @@ const usuarioSchema = new Schema(
       minLength: 3,
       maxLength: 50,
     },
+    dni: {
+      type: Number,
+      required: true,
+    },
+    telefono: {
+      type: Number,
+      required: true,
+    },
     email: {
       type: String,
       required: true,

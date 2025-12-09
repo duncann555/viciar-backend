@@ -29,6 +29,7 @@ const pedidoSchema = new Schema(
       type: String,
       required: true,
       enum: ["Pendiente", "Aprobado", "Rechazado", "Enviado"],
+      default: "Pendiente"
     },
   },
   { timestamps: true }
