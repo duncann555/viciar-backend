@@ -7,8 +7,11 @@ const detallePedidoSchema = new Schema(
       ref: "usuario",
       required: true,
     },
-
     dni: {
+      type: Number,
+      required: true,
+    },
+    telefono: {
       type: Number,
       required: true,
     },
@@ -23,7 +26,7 @@ const detallePedidoSchema = new Schema(
       maxLength: 50,
       required: true,
     },
-    comicilio: {
+    domicilio: {
       type: String,
       minLength: 3,
       maxLength: 100,
