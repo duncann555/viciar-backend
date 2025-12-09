@@ -7,14 +7,6 @@ const detallePedidoSchema = new Schema(
       ref: "usuario",
       required: true,
     },
-    dni: {
-      type: Number,
-      required: true,
-    },
-    telefono: {
-      type: Number,
-      required: true,
-    },
     provincia: {
       type: String,
       required: true,
