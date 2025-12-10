@@ -1,6 +1,7 @@
 import { json } from "express";
 import Producto from "../models/producto.js";
 import subirImagenCloudinary from "../helpers/cloudinaryUploader.js";
+import { controlarStock } from "../helpers/controlarStock.js";
 
 export const crearProducto = async (req, res) => {
   try {
@@ -86,12 +87,19 @@ export const editarProducto = async (req, res) => {
       const resultado = await subirImagenCloudinary(req.file.buffer);
       productoActualizado.imagenUrl = resultado.secure_url;
     }
-    await Producto.updateOne(
-      { _id: req.params.id },
-      { $set: productoActualizado }
-    );
 
-    res.status(200).json({ mensaje: "Producto actualizado correctamente" });
+    Object.assign(producto, productoActualizado);
+
+    controlarStock(producto);
+
+    await producto.save();
+
+    res
+      .status(200)
+      .json({
+        mensaje: "Producto actualizado correctamente",
+        producto: producto,
+      });
   } catch (err) {
     console.error(err);
     res.status(500).json({ mensaje: "Ocurrio un error al editar el producto" });
