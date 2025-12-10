@@ -94,14 +94,27 @@ export const editarProducto = async (req, res) => {
 
     await producto.save();
 
-    res
-      .status(200)
-      .json({
-        mensaje: "Producto actualizado correctamente",
-        producto: producto,
-      });
+    res.status(200).json({
+      mensaje: "Producto actualizado correctamente",
+      producto: producto,
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ mensaje: "Ocurrio un error al editar el producto" });
+  }
+};
+
+export const filtrarProductoNombre = async (req, res) => {
+  try {
+    const buscar = req.query.nombre || "";
+
+    const productos = await Producto.find({
+      nombre: { $regex: buscar, $options: "i" },
+    });
+
+    res.json(productos);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ mensaje: "Ocurrio un error al filtrar productos" });
   }
 };

@@ -3,6 +3,7 @@ import {
   crearProducto,
   editarProducto,
   eliminarProducto,
+  filtrarProductoNombre,
   listarProductos,
   obtenerProductoID,
 } from "../controllers/productos.controllers.js";
@@ -15,6 +16,7 @@ router
   .route("/")
   .post(upload.single("imagenUrl"), errorMulter, crearProducto)
   .get(listarProductos);
+router.route("/buscar").get(filtrarProductoNombre);
 router
   .route("/:id")
   .delete(eliminarProducto)
