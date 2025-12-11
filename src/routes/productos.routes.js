@@ -10,6 +10,7 @@ import {
 import upload from "../helpers/upload.js";
 import errorMulter from "../middlewares/ErrorMulter.js";
 import validacionProducto from "../middlewares/validacionProducto.js";
+import validacionID from "../middlewares/validacionID.js";
 
 const router = Router();
 
@@ -25,9 +26,10 @@ router
 router.route("/buscar").get(filtrarProductoNombre);
 router
   .route("/:id")
-  .delete(eliminarProducto)
-  .get(obtenerProductoID)
+  .delete(validacionID, eliminarProducto)
+  .get(validacionID, obtenerProductoID)
   .put(
+    validacionID,
     upload.single("imagenUrl"),
     errorMulter,
     validacionProducto,

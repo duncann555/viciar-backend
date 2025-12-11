@@ -9,11 +9,10 @@ import {
 
 const router = Router();
 
-router.route("/")
-  .post(crearPedido)
-  .get(listarPedidos);
+router.route("/").post(crearPedido).get(listarPedidos);
 
-router.route("/:id")
+router
+  .route("/:id")
   .get(obtenerPedidoID)
   .put(actualizarEstadoPedido)
   .delete(eliminarPedido);
