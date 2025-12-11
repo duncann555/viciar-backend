@@ -7,37 +7,37 @@ const detallePedidoSchema = new Schema(
       ref: "usuario",
       required: true,
     },
-
-    dni: {
-      type: Number,
-      required: true,
-    },
-    Provincia: {
+    provincia: {
       type: String,
       required: true,
       enum: ["Buenos Aires", "Cordoba", "Salta", "Tucuman", "Neuquen"],
     },
-    Ciudad: {
+    ciudad: {
       type: String,
       minLength: 3,
       maxLength: 50,
       required: true,
     },
-    Domicilio: {
+    domicilio: {
       type: String,
       minLength: 3,
       maxLength: 100,
       required: true,
     },
-    CodigoPostal: {
+    codigoPostal: {
       type: Number,
       required: true,
     },
-    Cuotas:{
+    cuotas: {
       type: String,
       required: true,
-      enum: ["Pago unico", "3 cuotas sin interes", "6 cuotas sin interes", "12 cuotas sin interes"]
-    }
+      enum: [
+        "Pago unico",
+        "3 cuotas sin interes",
+        "6 cuotas sin interes",
+        "12 cuotas sin interes",
+      ],
+    },
   },
 
   { timestamps: true }
