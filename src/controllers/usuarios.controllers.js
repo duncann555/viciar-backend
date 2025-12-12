@@ -35,7 +35,7 @@ export const login = async (req, res) => {
     const { email, password } = req.body;
     //verificar el email
     const usuarioBuscado = await Usuario.findOne({ email });
-    console.log(usuarioBuscado);
+
     if (!usuarioBuscado) {
       return res.status(404).json({ mensaje: "El usuario no existe" });
     }

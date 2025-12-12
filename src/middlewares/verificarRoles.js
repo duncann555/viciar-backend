@@ -1,7 +1,4 @@
 export const EsAdmin = (req, res, next) => {
-  console.log(req.usuario);
-  console.log(req.usuario.email);
-  console.log(req.usuario.rol);
   if (!req.usuario)
     return res.status(401).json({ mensaje: "Usuario no autenticado" });
 
