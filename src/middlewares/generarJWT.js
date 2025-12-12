@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
-const generarJWT = (usuario, email) => {
+const generarJWT = (usuario, email, rol) => {
   try {
-    const payload = { usuario, email };
+    const payload = { usuario, email, rol };
     const token = jwt.sign(payload, process.env.SECRETJWT, { expiresIn: "2h" });
     return token;
   } catch (error) {

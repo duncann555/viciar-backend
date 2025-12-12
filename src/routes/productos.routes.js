@@ -12,6 +12,7 @@ import errorMulter from "../middlewares/ErrorMulter.js";
 import validacionProducto from "../middlewares/validacionProducto.js";
 import validacionID from "../middlewares/validacionID.js";
 import verificarJWT from "../middlewares/verificarToken.js";
+import { EsAdmin } from "../middlewares/verificarRoles.js";
 
 const router = Router();
 
@@ -19,6 +20,7 @@ router
   .route("/")
   .post(
     verificarJWT,
+    EsAdmin,
     upload.single("imagenUrl"),
     errorMulter,
     validacionProducto,
@@ -28,10 +30,11 @@ router
 router.route("/buscar").get(filtrarProductoNombre);
 router
   .route("/:id")
-  .delete(verificarJWT, validacionID, eliminarProducto)
+  .delete(verificarJWT, EsAdmin, validacionID, eliminarProducto)
   .get(validacionID, obtenerProductoID)
   .put(
     verificarJWT,
+    EsAdmin,
     validacionID,
     upload.single("imagenUrl"),
     errorMulter,
