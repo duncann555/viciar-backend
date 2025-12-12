@@ -11,12 +11,14 @@ import upload from "../helpers/upload.js";
 import errorMulter from "../middlewares/ErrorMulter.js";
 import validacionProducto from "../middlewares/validacionProducto.js";
 import validacionID from "../middlewares/validacionID.js";
+import verificarJWT from "../middlewares/verificarToken.js";
 
 const router = Router();
 
 router
   .route("/")
   .post(
+    verificarJWT,
     upload.single("imagenUrl"),
     errorMulter,
     validacionProducto,
@@ -26,9 +28,10 @@ router
 router.route("/buscar").get(filtrarProductoNombre);
 router
   .route("/:id")
-  .delete(validacionID, eliminarProducto)
+  .delete(verificarJWT, validacionID, eliminarProducto)
   .get(validacionID, obtenerProductoID)
   .put(
+    verificarJWT,
     validacionID,
     upload.single("imagenUrl"),
     errorMulter,
