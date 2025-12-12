@@ -6,10 +6,11 @@ import {
   actualizarEstadoPedido,
   eliminarPedido,
 } from "../controllers/pedidos.controllers.js";
+import validacionPedido from "../middlewares/validacionPedido.js";
 
 const router = Router();
 
-router.route("/").post(crearPedido).get(listarPedidos);
+router.route("/").post(validacionPedido, crearPedido).get(listarPedidos);
 
 router
   .route("/:id")
