@@ -3,6 +3,7 @@ import {
   actualizarUsuario,
   cambiarEstadoUsuario,
   crearUsuario,
+  eliminarUsuario,
   listarUsuarios,
   login,
 } from "../controllers/usuarios.controllers.js";
@@ -13,6 +14,7 @@ import { EsAdmin } from "../middlewares/verificarRoles.js";
 import validarEstadoUsuario from "../middlewares/validarEstadoUsuario.js";
 import validacionEdicionUsuario from "../middlewares/validacionEdicionUsuario.js";
 import validacionCambioEstado from "../middlewares/validacionCambioEstado.js";
+import validacionID from "../middlewares/validacionID.js";
 
 const router = Router();
 
@@ -22,8 +24,21 @@ router
   .get(verificarJWT, EsAdmin, listarUsuarios);
 router
   .route("/:id")
-  .put(verificarJWT, EsAdmin, validacionEdicionUsuario, actualizarUsuario)
-  .patch(verificarJWT, EsAdmin, validarEstadoUsuario, cambiarEstadoUsuario);
+  .put(
+    verificarJWT,
+    EsAdmin,
+    validacionID,
+    validacionEdicionUsuario,
+    actualizarUsuario
+  )
+  .patch(
+    verificarJWT,
+    EsAdmin,
+    validacionID,
+    validarEstadoUsuario,
+    cambiarEstadoUsuario
+  )
+  .delete(verificarJWT, EsAdmin, validacionID, eliminarUsuario);
 router.route("/login").post(validacionLogin, login);
 
 export default router;
