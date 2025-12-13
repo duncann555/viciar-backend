@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  cambiarEstadoProducto,
   crearProducto,
   editarProducto,
   eliminarProducto,
@@ -13,6 +14,7 @@ import validacionProducto from "../middlewares/validacionProducto.js";
 import validacionID from "../middlewares/validacionID.js";
 import verificarJWT from "../middlewares/verificarToken.js";
 import { EsAdmin } from "../middlewares/verificarRoles.js";
+import validacionEstadoProducto from "../middlewares/validacionEstadoProducto.js";
 
 const router = Router();
 
@@ -40,6 +42,13 @@ router
     errorMulter,
     validacionProducto,
     editarProducto
+  )
+  .patch(
+    verificarJWT,
+    EsAdmin,
+    validacionID,
+    validacionEstadoProducto,
+    cambiarEstadoProducto
   );
 
 export default router;
