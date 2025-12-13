@@ -21,7 +21,8 @@ router
   .get(verificarJWT, EsAdmin, listarUsuarios);
 router
   .route("/:id")
-  .put(verificarJWT, EsAdmin, validacionEdicionUsuario, actualizarUsuario);
+  .put(verificarJWT, EsAdmin, validacionEdicionUsuario, actualizarUsuario)
+  .patch(verificarJWT, validarEstadoUsuario, cambiarEstadoUsuario);
 router.route("/login").post(validacionLogin, login);
 
 export default router;
