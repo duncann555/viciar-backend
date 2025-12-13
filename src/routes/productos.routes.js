@@ -14,6 +14,7 @@ import validacionProducto from "../middlewares/validacionProducto.js";
 import validacionID from "../middlewares/validacionID.js";
 import verificarJWT from "../middlewares/verificarToken.js";
 import { EsAdmin } from "../middlewares/verificarRoles.js";
+import validarEstadoUsuario from "../middlewares/validarEstadoUsuario.js";
 import validacionEstadoProducto from "../middlewares/validacionEstadoProducto.js";
 
 const router = Router();

@@ -12,6 +12,7 @@ import verificarJWT from "../middlewares/verificarToken.js";
 import { EsAdmin } from "../middlewares/verificarRoles.js";
 import validarEstadoUsuario from "../middlewares/validarEstadoUsuario.js";
 import validacionEdicionUsuario from "../middlewares/validacionEdicionUsuario.js";
+import validacionCambioEstado from "../middlewares/validacionCambioEstado.js";
 
 const router = Router();
 
@@ -22,7 +23,7 @@ router
 router
   .route("/:id")
   .put(verificarJWT, EsAdmin, validacionEdicionUsuario, actualizarUsuario)
-  .patch(verificarJWT, validarEstadoUsuario, cambiarEstadoUsuario);
+  .patch(verificarJWT, EsAdmin, validarEstadoUsuario, cambiarEstadoUsuario);
 router.route("/login").post(validacionLogin, login);
 
 export default router;
