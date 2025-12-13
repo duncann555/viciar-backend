@@ -2,6 +2,7 @@ import { json } from "express";
 import Producto from "../models/producto.js";
 import subirImagenCloudinary from "../helpers/cloudinaryUploader.js";
 import { controlarStock } from "../helpers/controlarStock.js";
+import Pedido from "../models/pedido.js";
 
 export const crearProducto = async (req, res) => {
   try {
@@ -116,5 +117,27 @@ export const filtrarProductoNombre = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ mensaje: "Ocurrio un error al filtrar productos" });
+  }
+};
+
+export const cambiarEstadoProducto = async (req, res) => {
+  try {
+    const producto = await Producto.findById(req.params.id);
+
+    if (!producto) {
+      return res.status(404).json({ mensaje: "Producto no encontrado" });
+    }
+
+    producto.estado = req.body.estado || producto.estado;
+    await producto.save();
+
+    res
+      .status(200)
+      .json({ mensaje: "Estado actualizado exitosamente", producto });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error al obtener el producto" });
   }
 };
