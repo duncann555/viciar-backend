@@ -65,3 +65,23 @@ export const login = async (req, res) => {
       .json({ mensaje: "Ocurrio un error al intentar loguear un usuario" });
   }
 };
+
+export const cambiarEstadoUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.findById(req.params.id);
+    if (!usuario) {
+      return res.status(404).json({ mensaje: "Usuario no encontrado" });
+    }
+
+    usuario.estado = req.body.estado || usuario.estado;
+    await usuario.save();
+
+    res
+      .status(200)
+      .json({ mensaje: "Estado del usuario actualizado correctamente" });
+  } catch (err) {
+    res.status(500).json({
+      mensaje: "Ocurrio un error al actualizar el estado del usuario",
+    });
+  }
+};
