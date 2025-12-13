@@ -3,6 +3,7 @@ import {
   actualizarUsuario,
   cambiarEstadoUsuario,
   crearUsuario,
+  eliminarUsuario,
   listarUsuarios,
   login,
 } from "../controllers/usuarios.controllers.js";
@@ -23,7 +24,8 @@ router
 router
   .route("/:id")
   .put(verificarJWT, EsAdmin, validacionEdicionUsuario, actualizarUsuario)
-  .patch(verificarJWT, EsAdmin, validarEstadoUsuario, cambiarEstadoUsuario);
+  .patch(verificarJWT, EsAdmin, validarEstadoUsuario, cambiarEstadoUsuario)
+  .delete(verificarJWT, EsAdmin, eliminarUsuario);
 router.route("/login").post(validacionLogin, login);
 
 export default router;
