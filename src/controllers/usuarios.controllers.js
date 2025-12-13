@@ -85,3 +85,20 @@ export const cambiarEstadoUsuario = async (req, res) => {
     });
   }
 };
+
+export const actualizarUsuario = async (req, res) => {
+  try {
+    const usuario = await Usuario.findByIdAndUpdate(req.params.id, req.body);
+
+    if (!usuario) {
+      return res.status(404).json({ mensaje: "Usuario no encontrado" });
+    }
+
+    res.status(200).json({ mensaje: "Usuario actualizado correctamente" });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ mensaje: "Ocurrio un error al actualizar el usuario" });
+  }
+};

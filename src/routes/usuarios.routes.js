@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  actualizarUsuario,
   cambiarEstadoUsuario,
   crearUsuario,
   listarUsuarios,
@@ -10,6 +11,7 @@ import validacionLogin from "../middlewares/validacionLogin.js";
 import verificarJWT from "../middlewares/verificarToken.js";
 import { EsAdmin } from "../middlewares/verificarRoles.js";
 import validarEstadoUsuario from "../middlewares/validarEstadoUsuario.js";
+import validacionEdicionUsuario from "../middlewares/validacionEdicionUsuario.js";
 
 const router = Router();
 
@@ -19,7 +21,7 @@ router
   .get(verificarJWT, EsAdmin, listarUsuarios);
 router
   .route("/:id")
-  .patch(verificarJWT, EsAdmin, validarEstadoUsuario, cambiarEstadoUsuario);
+  .put(verificarJWT, EsAdmin, validacionEdicionUsuario, actualizarUsuario);
 router.route("/login").post(validacionLogin, login);
 
 export default router;
