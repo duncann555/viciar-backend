@@ -55,7 +55,7 @@ export const login = async (req, res) => {
     );
     res.status(200).json({
       mensaje: "Usuario logueado correctamente",
-      usuario: usuarioBuscado.nombreUsuario,
+      rol: usuarioBuscado.rol,
       token,
     });
   } catch (error) {
