@@ -35,10 +35,8 @@ const productoSchema = new Schema(
     },
     estado: {
       type: String,
-      enum: {
-        values: ["Activo", "Inactivo"],
-        default: "Activo",
-      },
+      enum: ["Activo", "Inactivo"],
+      default: "Activo",
     },
     ultimoControl: {
       type: Date,
