@@ -1,24 +1,15 @@
-import mongoose from "mongoose";
 import { inicioAdmin } from "../helpers/inicioAdmin.js";
+import mongoose from "mongoose";
 
-const conectarDB = async () => {
-  try {
-    // Intentamos conectar
-    await mongoose.connect(process.env.MONGODB);
-    
+try {
+  mongoose.connect(process.env.MONGODB).then(() => {
     console.info("BD CONECTADA CORRECTAMENTE");
+  });
 
-    // Ejecutamos el helper una vez conectados
-    await inicioAdmin();
+  inicioAdmin();
 
-  } catch (error) {
-    // Si falla, mostramos el error y detenemos el servidor para no dejarlo inestable
-    console.error("Error al conectar la BD:", error);
-    process.exit(1); // 1 significa termina con error
-  }
-};
-
-// Ejecutamos la función
-conectarDB();
+} catch (error) {
+  console.error(error);
+}
 
 export default mongoose;
