@@ -21,11 +21,10 @@ export const crearUsuario = async (req, res) => {
 export const listarUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.find({
-      email: { $ne: process.env.ADMIN_EMAIL }
+      email: { $ne: process.env.ADMIN_EMAIL },
     });
 
     res.status(200).json(usuarios);
-
   } catch (error) {
     console.error(error);
     res
@@ -45,8 +44,9 @@ export const login = async (req, res) => {
     }
 
     if (usuarioBuscado.estado === "Suspendido") {
-
-      return res.status(403).json({ mensaje: "Tu cuenta ha sido suspendida. Contacta al administrador" })
+      return res.status(403).json({
+        mensaje: "Tu cuenta ha sido suspendida. Contacta al administrador",
+      });
     }
 
     //chequear el password
@@ -73,7 +73,6 @@ export const login = async (req, res) => {
       rol: usuarioBuscado.rol,
       token,
     });
-
   } catch (error) {
     console.error(error);
     res
@@ -133,5 +132,20 @@ export const eliminarUsuario = async (req, res) => {
     res
       .status(500)
       .json({ mensaje: "Ocurrio un error al eliminar el usuario" });
+  }
+};
+
+export const obtenerUsuarioID = async (req, res) => {
+  try {
+    const usuario = await Usuario.findById(req.params.id);
+
+    if (!usuario) {
+      return res.status(404).json({ mensaje: "El usuario no existe" });
+    }
+
+    res.status(200).json(usuario);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ mensaje: "Ocurrio un error al obtener el usuario" });
   }
 };
