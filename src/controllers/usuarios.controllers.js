@@ -20,8 +20,12 @@ export const crearUsuario = async (req, res) => {
 
 export const listarUsuarios = async (req, res) => {
   try {
-    const usuarios = await Usuario.find();
+    const usuarios = await Usuario.find({
+      email: { $ne: process.env.ADMIN_EMAIL }
+    });
+
     res.status(200).json(usuarios);
+
   } catch (error) {
     console.error(error);
     res
@@ -39,14 +43,22 @@ export const login = async (req, res) => {
     if (!usuarioBuscado) {
       return res.status(404).json({ mensaje: "El usuario no existe" });
     }
+
+    if (usuarioBuscado.estado === "Suspendido") {
+
+      return res.status(403).json({ mensaje: "Tu cuenta ha sido suspendida. Contacta al administrador" })
+    }
+
     //chequear el password
     const passwordValido = bcrypt.compareSync(
       password,
       usuarioBuscado.password
     );
+
     if (!passwordValido) {
       return res.status(401).json({ mensaje: "Contraseña incorrecta" });
     }
+
     //generar el token
     const token = generarJWT(
       usuarioBuscado.nombre,
@@ -55,9 +67,13 @@ export const login = async (req, res) => {
     );
     res.status(200).json({
       mensaje: "Usuario logueado correctamente",
+      nombre: usuarioBuscado.nombre,
+      email: usuarioBuscado.email,
+      _id: usuarioBuscado._id,
       rol: usuarioBuscado.rol,
       token,
     });
+
   } catch (error) {
     console.error(error);
     res
