@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
 import { inicioAdmin } from "../helpers/inicioAdmin.js";
+import mongoose from "mongoose";
 
 try {
   mongoose.connect(process.env.MONGODB).then(() => {
     console.info("BD CONECTADA CORRECTAMENTE");
-
-    //llamamos a la funcion una vez conectados
-    inicioAdmin();
   });
+
+  inicioAdmin();
+
 } catch (error) {
   console.error(error);
 }
