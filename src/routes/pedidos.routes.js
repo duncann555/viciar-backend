@@ -21,7 +21,7 @@ router
 router
   .route("/:id")
   .get(verificarJWT, EsAdmin, obtenerPedidoID)
-  .put(verificarJWT, EsAdmin, validacionCambioEstado, actualizarEstadoPedido)
+  .patch(verificarJWT, EsAdmin, validacionCambioEstado, actualizarEstadoPedido)
   .delete(verificarJWT, EsAdmin, eliminarPedido);
 
 export default router;
