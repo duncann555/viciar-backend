@@ -6,6 +6,7 @@ import {
   eliminarUsuario,
   listarUsuarios,
   login,
+  obtenerUsuarioID,
 } from "../controllers/usuarios.controllers.js";
 import validacionUsuarios from "../middlewares/validacionUsuarios.js";
 import validacionLogin from "../middlewares/validacionLogin.js";
@@ -38,6 +39,7 @@ router
     validarEstadoUsuario,
     cambiarEstadoUsuario
   )
+  .get(verificarJWT, EsAdmin, validacionID, obtenerUsuarioID)
   .delete(verificarJWT, EsAdmin, validacionID, eliminarUsuario);
 router.route("/login").post(validacionLogin, login);
 
