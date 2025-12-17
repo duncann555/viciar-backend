@@ -16,7 +16,7 @@ const router = Router();
 router
   .route("/")
   .post(verificarJWT, validacionPedido, crearPedido)
-  .get(listarPedidos);
+  .get(verificarJWT, EsAdmin, listarPedidos);
 
 router
   .route("/:id")
