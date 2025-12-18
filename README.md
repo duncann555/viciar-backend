@@ -110,10 +110,6 @@ MONGODB=mongodb+srv://paulagramajo:paula2212@cluster0.qltftnx.mongodb.net/viciAR
 # JWT
 SECRETJWT=PaUAbUeLa3113$
 
-# Cloudinary
-CLOUDINARY_CLOUD_NAME=dnjmmcdas
-CLOUDINARY_API_KEY=354949844746554
-CLOUDINARY_API_SECRET=QoE0DHhIdtBxASKgst2JyVuY1Ys
 
 #Datos Admin
 ADMIN_EMAIL=admin@gmail.com
