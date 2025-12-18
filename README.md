@@ -165,12 +165,5 @@ El backend se encuentra deployado en Vercel y disponible en el siguiente enlace:
 * Paula Gramajo
 * Sebastian Flomenbaun
 
----
-
-## 📄 Licencia
-
-Este proyecto es de uso público con fines educativos.
-
----
 
 🎮 *Viciar no es un vicio, es una pasión.*
