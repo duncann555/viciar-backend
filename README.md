@@ -10,42 +10,42 @@ El backend está diseñado para ser consumido por un frontend en **React**.
 
 ### 🕹️ Gestión de Productos
 
-* Crear, leer, actualizar y eliminar productos (CRUD).
-* Gestión de stock de videojuegos, consolas y accesorios.
-* Validación de datos en creación y edición.
-* Búsqueda de productos por ID.
-* Carga y gestión de imágenes mediante **Multer + Cloudinary**.
+- Crear, leer, actualizar y eliminar productos (CRUD).
+- Gestión de stock de videojuegos, consolas y accesorios.
+- Validación de datos en creación y edición.
+- Búsqueda de productos por ID.
+- Carga y gestión de imágenes mediante **Multer + Cloudinary**.
 
 ### 📂 Categorías de Productos
 
-* Juegos de PC
-* PlayStation
-* Xbox
-* Nintendo
-* Consolas
-* Accesorios
+- Juegos de PC
+- PlayStation
+- Xbox
+- Nintendo
+- Consolas
+- Accesorios
 
 ### 👤 Gestión de Usuarios
 
-* Registro de usuarios con contraseña encriptada.
-* Login de usuarios.
-* Autenticación mediante **JWT**.
-* Manejo de roles:
+- Registro de usuarios con contraseña encriptada.
+- Login de usuarios.
+- Autenticación mediante **JWT**.
+- Manejo de roles:
 
-  * `administrador`
-  * `usuario`
+  - `administrador`
+  - `usuario`
 
 ### 🧾 Gestión de Pedidos
 
-* Creación de pedidos asociados a usuarios.
-* Manejo de **detalle de pedidos** con productos y cantidades.
-* Cálculo del total del pedido.
+- Creación de pedidos asociados a usuarios.
+- Manejo de **detalle de pedidos** con productos y cantidades.
+- Cálculo del total del pedido.
 
 ### 🔐 Seguridad
 
-* Rutas protegidas con token JWT válido.
-* Control de acceso según rol.
-* Encriptación de contraseñas usando **bcrypt**.
+- Rutas protegidas con token JWT válido.
+- Control de acceso según rol.
+- Encriptación de contraseñas usando **bcrypt**.
 
 ---
 
@@ -53,23 +53,23 @@ El backend está diseñado para ser consumido por un frontend en **React**.
 
 ### Backend
 
-* **Node.js** – Entorno de ejecución JavaScript.
-* **Express.js** – Framework para construir la API REST.
-* **MongoDB Atlas** – Base de datos NoSQL en la nube.
-* **Mongoose** – ODM para modelado de datos.
+- **Node.js** – Entorno de ejecución JavaScript.
+- **Express.js** – Framework para construir la API REST.
+- **MongoDB Atlas** – Base de datos NoSQL en la nube.
+- **Mongoose** – ODM para modelado de datos.
 
 ### Autenticación y Validación
 
-* **JSON Web Token (JWT)** – Autenticación segura.
-* **bcrypt** – Hasheo de contraseñas.
-* **express-validator** – Validación de datos de entrada.
+- **JSON Web Token (JWT)** – Autenticación segura.
+- **bcrypt** – Hasheo de contraseñas.
+- **express-validator** – Validación de datos de entrada.
 
 ### Utilidades
 
-* **morgan** – Logger de peticiones HTTP.
-* **cors** – Habilitación de Cross-Origin Resource Sharing.
-* **multer** – Manejo de subida de archivos.
-* **cloudinary** – Almacenamiento de imágenes en la nube.
+- **morgan** – Logger de peticiones HTTP.
+- **cors** – Habilitación de Cross-Origin Resource Sharing.
+- **multer** – Manejo de subida de archivos.
+- **cloudinary** – Almacenamiento de imágenes en la nube.
 
 ---
 
@@ -77,10 +77,10 @@ El backend está diseñado para ser consumido por un frontend en **React**.
 
 Antes de comenzar, asegúrate de tener instalado:
 
-* Node.js (versión 18.x o superior recomendada)
-* npm
-* Cuenta en **MongoDB Atlas**
-* Cuenta en **Cloudinary**
+- Node.js (versión 18.x o superior recomendada)
+- npm
+- Cuenta en **MongoDB Atlas**
+- Cuenta en **Cloudinary**
 
 ---
 
@@ -110,11 +110,6 @@ MONGODB=mongodb+srv://paulagramajo:paula2212@cluster0.qltftnx.mongodb.net/viciAR
 # JWT
 SECRETJWT=PaUAbUeLa3113$
 
-# Cloudinary
-CLOUDINARY_CLOUD_NAME=dnjmmcdas
-CLOUDINARY_API_KEY=354949844746554
-CLOUDINARY_API_SECRET=QoE0DHhIdtBxASKgst2JyVuY1Ys
-
 #Datos Admin
 ADMIN_EMAIL=admin@gmail.com
 ADMIN_PASSWORD=AdminAlfa777
@@ -140,12 +135,12 @@ npm run dev
 
 La API expone endpoints para:
 
-* Autenticación (login / registro)
-* Usuarios
-* Productos
-* Pedidos y detalle de pedidos
+- Autenticación (login / registro)
+- Usuarios
+- Productos
+- Pedidos y detalle de pedidos
 
-📘 *La documentación completa de endpoints puede encontrarse en el proyecto.*
+📘 _La documentación completa de endpoints puede encontrarse en el proyecto._
 
 ---
 
@@ -159,11 +154,10 @@ El backend se encuentra deployado en Vercel y disponible en el siguiente enlace:
 
 ## ✒️ Autores
 
-* Héctor Eduardo Velásquez
-* Luis Geremias Robles
-* Maximiliano Gómez Tolrá
-* Paula Gramajo
-* Sebastian Flomenbaun
+- Héctor Eduardo Velásquez
+- Luis Geremias Robles
+- Maximiliano Gómez Tolrá
+- Paula Gramajo
+- Sebastian Flomenbaun
 
-
-🎮 *Viciar no es un vicio, es una pasión.*
+🎮 _Viciar no es un vicio, es una pasión._
