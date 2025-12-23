@@ -39,7 +39,7 @@ router
     validarEstadoUsuario,
     cambiarEstadoUsuario
   )
-  .get(verificarJWT, EsAdmin, validacionID, obtenerUsuarioID)
+  .get(verificarJWT, validacionID, obtenerUsuarioID)
   .delete(verificarJWT, EsAdmin, validacionID, eliminarUsuario);
 router.route("/login").post(validacionLogin, login);
 
